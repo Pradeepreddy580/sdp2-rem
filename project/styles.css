@@ -1,0 +1,88 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+#navbar{
+    background-color: aqua;
+    font-family: monospace;
+    font-size: 20px;
+}
+#navbar ul{
+    overflow: auto;
+    display: flex;
+}
+#navbar li{
+    list-style: none;
+    padding: 13px;
+}
+
+#navbar a{
+    text-decoration: none;
+}
+#navbar a:hover{
+    color: gold;
+}
+
+#nav-bar{
+    font-family: monospace;
+    font-size: 20px;
+}
+
+#nav-bar ul{
+    align-items: center;
+    overflow: auto;
+    display: flex;
+}
+
+#nav-bar a{
+    text-decoration: none;
+}
+
+#nav-bar li{
+    list-style: none;
+    padding: 13px;
+}
+
+.small-nav{
+    padding: 5% 20%;
+}
+
+input[type=search]{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+input[type=submit]{
+    width: 19%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.register, .login{
+    border-radius: 5px;
+    padding: 6% 8%;
+}
+
+.register-form, .login-form{
+    border-radius: 5px;
+    padding: 5% 6%;
+}
+
+input[type=text],[type=password],[type=email],[type=button]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+label{
+    font-size:x-large;
+    font-family: monospace;
+}
+
+h2{
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans';
+    color: green;
+}
