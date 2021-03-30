@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class='home'>
+    <h2>Search Results for -- "{{ query }}"</h2>
+        <div class="login-form">
+        {% if properties|length < 1 %}
+        <p> No Results for query <b>"{{query}}"</b> </p>
+        {% endif %}
+        </div>
+        {% for property in properties %}
+        <section class="section">
+            <img src="{{property.propertyImages.url}}" class="image" />
+            <div class="content">
+          
+              <h2 class="title">
+                {{ property.propertyName }}
+              </h2>
+              <p class="paragraph">
+                {{ property.propertyDescription }}
+                {{ property.propertyAddedBy }}
+                <a href="{% url 'view' propertyid=property.propertyId %}">Show Details</a>
+              </p>
+          </section>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

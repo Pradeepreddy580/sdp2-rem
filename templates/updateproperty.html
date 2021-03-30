@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="login">
+    <h2>Update Property</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value='Update Property'>
+    </form>
+</div>
+
+{% endblock %}

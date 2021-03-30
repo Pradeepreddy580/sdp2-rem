@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="login">
+    <h2>Your Properties</h2>
+    <div class="prop_view">
+    {% for property in properties %}
+    <section class="section">
+        <img src="{{property.propertyImages.url}}" class="image" />
+        <div class="content">
+      
+          <h2 class="title">
+            {{ property.propertyName }}
+          </h2>
+          <p class="paragraph">
+            {{ property.propertyDescription }}
+            {{ property.propertyAddedBy }}
+            <a href="{% url 'viewuserprop' propertyid=property.propertyId %}">Show Details</a>
+          </p>
+        </div>
+      </section>
+    {% endfor %}
+</div>
+<a href="{% url 'addproperty' %}" id="addpro_btn">Add Property</a>
+</div>
+{% endblock %}

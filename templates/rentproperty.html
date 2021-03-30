@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="home">
+   <h2>Properties for rent</h2>
+    {% for property in properties %}
+    <section class="section">
+        <img src="{{property.propertyImages.url}}" class="image" />
+        <div class="content">
+      
+          <h2 class="title">
+            {{ property.propertyName }}
+          </h2>
+          <p class="paragraph">
+            {{ property.propertyDescription }}
+            {{ property.propertyAddedBy }}
+            <a href="{% url 'view' propertyid=property.propertyId %}">Show Details</a>
+          </p>
+        </div>
+      </section>
+    {% endfor %}
+</div>
+{% endblock %}

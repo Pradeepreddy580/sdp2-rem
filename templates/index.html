@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li class="items"><a href="{% url 'home' %}">Home</a></li>
+                <li class="items"><a href='#'>About us</a></li>
+                <li  class="right"><a href="{% url 'login' %}">Login</a></li>
+                <li  class="right"><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="sec">
+        <div  class='small-nav'>
+            <nav id="nav-bar">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li class="items"><a href='{% url "buyproperty" %}'>Buy</a></li> |
+                    <li class="items"><a href="{% url 'rentproperty' %}">Rent</a></li> |
+                    <li class="items"><a href="{% url 'addproperty' %}">Sell</a></li>
+                    {% else %}
+                    <li class="items"><a href='{% url "buyproperty" %}'>Buy</a></li> |
+                    <li class="items"><a href="{% url 'rentproperty' %}">Rent</a></li> |
+                    <li class="items"><a href="{% url 'sellproperty' %}">Sell</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <hr>
+            <form class='search' method="get" action='search'>
+                <input type='search' name='search' placeholder="Enter Place">
+                <input type='submit' value='Search'>
+            </form>
+        </div>
+        <hr>
+        <div class='home'>
+            <h2>Some Popular Properties</h2>
+                {% for property in properties %}
+                <section class="section">
+                    <img src="{{property.propertyImages.url}}" class="image" />
+                    <div class="content">
+                  
+                      <h2 class="title">
+                        {{ property.propertyName }}
+                      </h2>
+                      <p class="paragraph">
+                        {{ property.propertyDescription }}
+                        {{ property.propertyAddedBy }}
+                        <a href="{% url 'view' propertyid=property.propertyId %}">Show Details</a>
+                      </p>
+                  </section>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>

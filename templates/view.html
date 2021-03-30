@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class='view'>
+    {% for property in properties %}
+    <section class="view_content">
+        <h2 class="prop_title">
+            {{ property.propertyName }}
+          </h2>
+        <img src="{{property.propertyImages.url}}" class="view_image" />
+          <h2 class="prop_title">
+            {{ property.propertyName }}
+          </h2>
+          <p class="prop_paragraph">
+            {{ property.propertyDescription }}
+          </p>
+          <div class="table_content">
+          <table>
+              <tr>
+                  <th>Property Id</th>
+                  <td>{{ property.propertyId }}</td>
+              </tr>
+              <tr>
+                <th>Property Owner</th>
+                <td>{{ property.propertyOwner }}</td>
+            </tr>
+            <tr>
+                <th>Property City</th>
+                <td>{{ property.propertyCity }}</td>
+            </tr>
+            <tr>
+                <th>Property State</th>
+                <td>{{ property.propertyState }}</td>
+            </tr>
+            <tr>
+                <th>Property Pincode</th>
+                <td>{{ property.propertyPincode }}</td>
+            </tr>
+            <tr>
+                <th>Property Price</th>
+                <td>Rs. {{ property.propertyPrice }} Per Month</td>
+            </tr>
+            <tr>
+                <th>Property Added By</th>
+                <td>{{ property.propertyAddedBy }}</td>
+            </tr>
+            <tr>
+                <th>Property Category</th>
+                <td>{{ property.propertyCategory }}</td>
+            </tr>
+            <tr>
+                <th>Property Added Date</th>
+                <td>{{ property.propertyAddedDate }}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
+          {% if user.is_authenticated and property.propertyAddedBy == user.username %}
+            <div></div>
+          {% elif user.is_authenticated  %}
+          <a href="{% url 'contact_info' %}" id="addpro_btn">{{ property.propertyCategory }}</a>
+          {% else %}
+          <a href="{% url 'login' %}" id="addpro_btn">{{ property.propertyCategory }}</a>
+          {% endif %}
+        </div>
+      </section>
+    {% endfor %}
+</div>
+
+</div>
+
+{% endblock %}

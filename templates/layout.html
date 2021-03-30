@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated %}
+        <div id='topnav'>
+            <a>Real Estate Mangement System</a>
+            <div class='topnav-right'>
+              <a href="{% url 'viewproperty' %}">Your Properties</a>
+              <a href="{% url 'profile' %}">Profile</a>
+              <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <nav id="navbar">
+            <ul>
+                <li class="items"><a href="{% url 'home' %}">Home</a></li>
+                <li class="items"><a href='#'>About us</a></li>
+                <li  class="right"><a href="{% url 'login' %}">Login</a></li>
+                <li  class="right"><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </nav>
+        {% endif %}
+    </header>
+    <section class="sec">
+        <div  class='small-nav'>
+            <nav id="nav-bar">
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li class="items"><a href="{% url 'dashboard' %}">Search Property</a></li> |
+                    <li class="items"><a href='{% url "buyproperty" %}'>Buy</a></li> |
+                    <li class="items"><a href="{% url 'rentproperty' %}">Rent</a></li> |
+                    <li class="items"><a href="{% url 'addproperty' %}">Sell</a></li>
+                    {% else %}
+                    <li class="items"><a href='{% url "buyproperty" %}'>Buy</a></li> |
+                    <li class="items"><a href="{% url 'rentproperty' %}">Rent</a></li> |
+                    <li class="items"><a href="{% url 'sellproperty' %}">Sell</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <hr>
+            <form class='search' method="get" action='{% url "search" %}'>
+                <input type='search' name='search' placeholder="Enter Place">
+                <input type='submit' value='Search'>
+            </form>
+        </div>
+        <hr>
+        {% block content %}
+
+        {% endblock %}
+    </section>
+</body>
+</html>

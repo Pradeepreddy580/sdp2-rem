@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="login">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <h2>Username : {{ user.username }}</h2>
+        {{form.as_p}}
+        <input type="submit" value='Update'>
+    </form>
+
+</div>
+
+{% endblock %}

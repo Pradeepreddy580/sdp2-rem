@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="login">
+    <h2>Delete Property</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Do You want to delte the Selected Property " {{ property.propertyName }} "</h3>
+        <input type="submit" value='Delete Property'>
+        <a href="{% url 'viewproperty' %}">Cancel</a>
+    </form>
+
+</div>
+
+{% endblock %}

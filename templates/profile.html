@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="login">
+
+<h2>Profile</h2>
+<div class="table_content">
+<table>
+    <tr>
+        <th>Username</th>
+        <td>{{user.username}}</td>
+    </tr>
+    <tr>
+        <th>First Name</th>
+        <td>{{user.first_name}}</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>{{user.last_name}}</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>{{user.email}}</td>
+    </tr>
+    <tr>
+        <th>Change Password</th>
+        <td><a href="{% url 'changepassword' %}">Change Password</a></td>
+    </tr>
+</table>
+</div>
+<a href="{% url 'editprofile' %}">Edit Profile</a>
+</div>
+{% endblock %}
